@@ -1,5 +1,6 @@
 CC ?= gcc
-CFLAGS := -Wall -Werror -Wextra -pedantic
+#CFLAGS := -Wall -Werror -Wextra -pedantic
+CFLAGS := -g
 COBJFLAGS := $(CFLAGS) -c
 
 OBJ_PATH := obj
@@ -28,5 +29,4 @@ $(TARGET): $(OBJS)
 
 # Clean rule
 clean:
-	clear
 	$(RM) -r $(OBJ_PATH)

@@ -1,4 +1,4 @@
-#include "include/arrays.h"
+#include "arrays.h"
 
 /**
  * tokenize_string - used to tokenize a string into an array

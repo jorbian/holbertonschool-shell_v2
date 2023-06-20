@@ -3,7 +3,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+
+#include "my_strings.h"
 
 #define HASH_VALUE 5381
 #define SIZE_OF_TABLE 255 /* TOTAL NUMBER OF SYMBOLS SUPPORTED */
@@ -58,5 +59,9 @@ void delete_hash_table(table_t *hash_table);
 int new_string_node(table_t *string_table, const char *key, const void *value);
 void list_all_string_nodes(table_t *string_table);
 size_t key_index(const unsigned char *key, size_t max_length);
+
+void swap_string_values(table_t *symbol_table, const char *key0, const char *key1);
+void modify_string_node(table_t *table, const char *key, char *new_value);
+char *retrieve_string_value(table_t *symbol_table, const char *key);
 
 #endif

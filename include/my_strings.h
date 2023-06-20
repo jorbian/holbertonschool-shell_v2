@@ -20,7 +20,9 @@ int _strcmp(const char *s1, const char *s2);
 int _strlen(const char *s);
 void _strcpy(char *dest, const char *src);
 void *_memcpy(void *destination, const void *source, size_t num);
+int _atoi(char *s);
 
+char *take_input(void);
 
 char *trim_whitespace(char *str);
 char *take_right_string(char *string, const char delimiter);
