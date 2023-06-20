@@ -1,4 +1,6 @@
-#include "hash.h"
+#include "hashtable.h"
+
+static size_t hash_djb2(const unsigned char *str);
 
 /**
  * key_index - returns location to store value in symbol table

@@ -26,6 +26,5 @@ char *trim_whitespace(char *str);
 char *take_right_string(char *string, const char delimiter);
 char *take_left_string(char *string, const char delimiter);
 int string_contains(char *string, const char delimiter);
-static int calculate_dividing_line(char *string, const char delimiter);
 
 #endif

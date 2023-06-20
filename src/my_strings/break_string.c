@@ -3,6 +3,8 @@
 #define ORIGINAL 0
 #define NEW 1
 
+static int calculate_dividing_line(char *string, const char delimiter);
+
 /**
  * take_right_string - returns only the part of the string right of given delim
  * @string: string we're taking the right portion of
@@ -16,7 +18,8 @@ char *take_right_string(char *string, const char delimiter)
 
 	size_t string_length[2] = {0, 0};
 	size_t cursor[2] = {0, 0};
-	size_t divide = calculate_dividing_line(string, delimiter);
+
+	int divide = (int)calculate_dividing_line(string, delimiter);
 
 	if ((string == NULL) || (delimiter == '\0') || (divide == -1))
 		return (NULL);
@@ -49,7 +52,8 @@ char *take_left_string(char *string, const char delimiter)
 
 	size_t string_length = 0;
 	size_t cursor = 0;
-	size_t divide = calculate_dividing_line(string, delimiter);
+	
+	int divide = calculate_dividing_line(string, delimiter);
 
 	if ((string == NULL) || (delimiter == '\0') || (divide == -1))
 		return (NULL);
