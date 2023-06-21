@@ -89,4 +89,4 @@ fi
 
 make --directory=$TARGET_LIB_DIR       \
      --makefile=$GENERIC_MAKEFILE_PATH \
-     output_file=$OUTPUT_PATH          \
+     out_file=$OUTPUT_PATH          \
