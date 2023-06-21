@@ -12,12 +12,6 @@
 #include <sys/types.h>
 
 #include "my_strings.h"
-#include "builtins.h"
 
-/*execution functions*/
-void prompt(void);
-char *find_command(char **tokenized, env_t *head);
-char *create_command(char *filename, path_t *path_llist);
-char *execute_command(char **cmd, char *status);
 
 #endif /*HSH_H*/
