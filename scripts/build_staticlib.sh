@@ -1,8 +1,12 @@
 #!/usr/bin/bash
 
+cd "$(dirname "$0")"
+
 PROJECT_ROOT=$(realpath ..)
 DEFAULT_OUTPUT_DIR="${PROJECT_ROOT}/lib"
 SRC_FOLDER_NAME="${PROJECT_ROOT}/src"
+
+echo $PROJECT_ROOT
 
 GENERIC_MAKEFILE_NAME="staticlib.mk"
 GENERIC_MAKEFILE_PATH="$(realpath $GENERIC_MAKEFILE_NAME)"
@@ -44,7 +48,7 @@ seeking_better_input() {
     # 1=INPUT PARAM WE NEEDED AND DIDN'T GET
     # 2=WHAT WE NEEDED IT FOR
     if [[ -n $1 && -n $2 ]]; then
-        echo "PLEASE PROVIDE $1 FOR $2."
+        echo "ERROR: PLEASE PROVIDE $1 FOR $2."
     else
         raise_error
     fi
@@ -52,7 +56,7 @@ seeking_better_input() {
 
 if [[ ($# -lt 1) || (! -d "$TARGET_LIB_DIR") ]]; then
     if [[ -n $1 ]]; then
-        bad_file "LIBRARY FOLDER" "../src/$TARGET_LIB_NAME"
+        bad_file "ERROR: LIBRARY FOLDER" "../src/$TARGET_LIB_NAME"
     else
         echo "ERROR: NO INPUT PROVIDED"
     fi

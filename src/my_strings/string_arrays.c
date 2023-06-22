@@ -1,4 +1,4 @@
-#include "arrays.h"
+#include "my_strings.h"
 
 /**
  * new_string_array - allocates a place in memory for array of x length

@@ -1,4 +1,4 @@
-#include "arrays.h"
+#include "my_strings.h"
 
 #define ORIGINAL 0
 #define NEW 1

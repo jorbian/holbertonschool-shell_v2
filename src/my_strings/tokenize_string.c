@@ -1,4 +1,4 @@
-#include "arrays.h"
+#include "my_strings.h"
 
 /**
  * tokenize_string - used to tokenize a string into an array
@@ -28,8 +28,6 @@ char **tokenize_string(char *string, const char *delimiters)
 		current_token = strtok(NULL, delimiters);
 		current_index++;
 	}
-	ret_array[current_index] == NULL;
-
 	return (ret_array);
 }
 

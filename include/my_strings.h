@@ -21,12 +21,16 @@ int _strlen(const char *s);
 void _strcpy(char *dest, const char *src);
 void *_memcpy(void *destination, const void *source, size_t num);
 int _atoi(char *s);
-
-char *take_input(void);
+char *_strcat(char *s1, char *s2);
 
 char *trim_whitespace(char *str);
 char *take_right_string(char *string, const char delimiter);
 char *take_left_string(char *string, const char delimiter);
-int string_contains(char *string, const char delimiter);
+
+char **new_string_array(size_t length);
+void free_string_array(char **array);
+void list_string_array(char **array);
+size_t calculate_num_of_tokens(const char *string, const char *delimiters);
+char **tokenize_string(char *string, const char *delimiters);
 
 #endif

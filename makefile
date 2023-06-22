@@ -1,32 +1,26 @@
 CC ?= gcc
 #CFLAGS := -Wall -Werror -Wextra -pedantic
-CFLAGS := -g
+CFLAGS :=
 COBJFLAGS := $(CFLAGS) -c
 
-OBJ_PATH := obj
-SRC_PATH := src
-INC_PATH := include
+OBJ_PATH := $(or $(obj_path), obj)
+INC_PATH := $(or $(headers), include)
+SRC_PATH := $(or $(src_path), src)
 
-# Source files
-SRCS := $(wildcard $(SRC_PATH)/**/*.c)
-OBJS := $(patsubst $(SRC_PATH)/%.c,$(OBJ_PATH)/%.o,$(SRCS))
+SRC_FILES := $(shell find $(SRC_PATH) -type f -name '*.c')
+OBJ_FILES := $(patsubst $(SRC_PATH)/%.c,$(OBJ_PATH)/%.o,$(SRC_FILES))
 
-# Main target
 TARGET := hsh
 
-# Default rule
 all: $(TARGET) clean
 
-# Rule to build object files
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -I$(INC_PATH) -c $< -o $@
+	$(CC) $(COBJFLAGS) -I$(INC_PATH) -o $@ $<
 
-# Rule to build the executable
-$(TARGET): $(OBJS)
-	@mkdir -p $(@D)
+$(TARGET): $(OBJ_FILES)
 	$(CC) $(CFLAGS) $^ -o $@
 
-# Clean rule
+.PHONY: clean
 clean:
-	$(RM) -r $(OBJ_PATH)
+	rm -rf $(OBJ_PATH)
