@@ -108,23 +108,21 @@ void throw_error(SimpleShell_t *shell, int error_num)
 	char error_message[255];
 
 	if (error_num == 1)
-		snprintf(specific_error, 20, "%s", "Permission denied\n");
+		sprintf(specific_error, "%s", "Permission denied\n");
 	else if (error_num == 2)
-		snprintf(specific_error, 20, "%s", "not found\n");
+		sprintf(specific_error, "%s", "not found\n");
 	else if (error_num == 3)
-		snprintf(specific_error, 20, "%s", "Can't open\n");
+		sprintf(specific_error, "%s", "Can't open\n");
 	else
-		snprintf(specific_error, 20, "%s", "Unknown Error\n");
+		sprintf(specific_error, "%s", "Unknown Error\n");
 
-	snprintf(
+	sprintf(
 		error_message,
-		255,
 		"%s: %d: %s: %s",
 		getenv("_"),
 		shell->line_num,
 		shell->command_args[0],
 		specific_error
 	);
-
 	fprintf(stderr, "%s", error_message);
 }
