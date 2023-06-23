@@ -14,7 +14,7 @@ TARGET := hsh
 all: $(TARGET) clean
 
 %.o: %.c
-	$(CC) $(COBJFLAGS) -I$(INC_PATH) -o $@ $<
+	$(CC) $(COBJFLAGS) -o $@ $<
 
 $(TARGET): $(OBJ_FILES)
 	$(CC) $(CFLAGS) $^ -o $@
