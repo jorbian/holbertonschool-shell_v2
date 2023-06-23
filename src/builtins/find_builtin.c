@@ -1,5 +1,4 @@
-#include "hashtable.h"
-#include "builtins.h"
+#include "hsh.h"
 
 /**
  * find_builtin - gets a matched value from a hash table

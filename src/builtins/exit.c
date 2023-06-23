@@ -1,4 +1,4 @@
-#include "shellv2.h"
+#include "hsh.h"
 
 void my_exit(char **args)
 {
@@ -8,7 +8,9 @@ void my_exit(char **args)
 
     fflush(NULL);
 
-    free_shell();
+    delete_hash_table(symbol_table);
+
+    free_string_array(path_list);
 
     exit(exit_status);
 }

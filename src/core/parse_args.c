@@ -10,15 +10,15 @@
 
 int parse_args(char **tokenized)
 {
-	/* int i; */
+	int i; 
 	int line_len;
-
+/*
 	line_len = _strlen(*tokenized);
 
 	if (_strcmp(tokenized[line_len + 1], NULL))
 		return (
 			check_built_ins(tokenized)
-		);
+		);*/
 
 	return (SUCCESS);
 }

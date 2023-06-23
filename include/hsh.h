@@ -11,7 +11,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "envs.h"
+#include "builtins.h"
 #include "hashtable.h"
 #include "my_strings.h"
 
@@ -29,8 +29,7 @@ enum status_codes_t {
 extern table_t *symbol_table;
 extern char **path_list;
 
-table_t *retrieve_environmental_variables(int argc, char **argv, char **envp);
-char **create_path_list();
+void create_globals(int argc, char **argv, char **envp);
 
 /*separator/operator functions*/
 int check_built_ins(char **tokenized);
@@ -50,6 +49,5 @@ int bi_set_env();
 int bi_unset_env();
 
 char *get_pwd();
-void print_env(char **list, int oi);
 
 #endif /*HSH_H*/
