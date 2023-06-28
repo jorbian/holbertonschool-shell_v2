@@ -79,7 +79,7 @@ char **tokenize_string(char *string, const char *delimiters)
 
 	while (current_token != NULL)
 	{
-		ret_array[current_index] = _strdup(current_token);
+		ret_array[current_index] = string_dup(current_token);
 
 		current_token = strtok(NULL, delimiters);
 		current_index++;
@@ -105,7 +105,7 @@ size_t calculate_num_of_tokens(const char *string, const char *delimiters)
 	char *string_copy;
 	char *current_token;
 
-	string_copy = _strdup(string);
+	string_copy = string_dup(string);
 
 	if (string_copy == NULL)
 		return (0);

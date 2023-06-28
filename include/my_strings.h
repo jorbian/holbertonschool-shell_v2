@@ -19,7 +19,7 @@
 #define TOUPPER(c) ((c >= 'a' && c <= 'z') ? (c + ('A' - 'a')) : c)
 
 /* VARIOUS REINVENTIONS OF THE WHEEL */
-char *_strdup(const char *old_string);
+char *string_dup(const char *old_string);
 int _strcmp(const char *s1, const char *s2);
 int _strlen(const char *s);
 void *_memcpy(void *destination, const void *source, size_t num);

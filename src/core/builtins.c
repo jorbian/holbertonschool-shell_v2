@@ -28,24 +28,24 @@ void change_dir(char **args)
 {
 	char *dirnames[2];
 
-	dirnames[CURPWD] = _strdup(retrieve_value(symbol_table, "PWD"));
+	dirnames[CURPWD] = string_dup(retrieve_value(symbol_table, "PWD"));
 
 	if (args[1] != NULL)
 	{
 		if (args[1][0] == '-')
-			dirnames[NEWPWD] = _strdup(
+			dirnames[NEWPWD] = string_dup(
 				retrieve_value(symbol_table, "OLDPWD")
 			);
 		else if (args[1][0] != '~')
-			dirnames[NEWPWD] = _strdup(args[1]);
+			dirnames[NEWPWD] = string_dup(args[1]);
 		else
-			dirnames[NEWPWD] = _strdup(
+			dirnames[NEWPWD] = string_dup(
 				retrieve_value(symbol_table, "HOME")
 		);
 	}
 	else
 	{
-		dirnames[NEWPWD] = _strdup(
+		dirnames[NEWPWD] = string_dup(
 			retrieve_value(symbol_table, "HOME")
 		);
 	}

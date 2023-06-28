@@ -40,7 +40,7 @@ static char **create_command_path(const char *path_variable)
 {
 	char **split_path = NULL;
 
-	char *copy_to_shred = _strdup(path_variable);
+	char *copy_to_shred = string_dup(path_variable);
 
 	split_path = tokenize_string(copy_to_shred, ":");
 

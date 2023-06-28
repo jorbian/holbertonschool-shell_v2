@@ -50,8 +50,8 @@ static node_t *initalize_node(const char *key, const char *value)
 	if (new_node == NULL)
 		return (NULL);
 
-	new_node->key = _strdup(key);
-	new_node->value = _strdup(value);
+	new_node->key = string_dup(key);
+	new_node->value = string_dup(value);
 	new_node->next = NULL;
 
 	return (new_node);

@@ -1,12 +1,12 @@
 #include "my_strings.h"
 
 /**
- * _strdup - reimplementation of _strdup
+ * string_dup - reimplementation of string_dup
  * @old_string: string that needs to be copied
  *
  * Return: pointer to the start of new string
 */
-char *_strdup(const char *old_string)
+char *string_dup(const char *old_string)
 {
 	char *new_string;
 
