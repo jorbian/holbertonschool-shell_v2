@@ -1,5 +1,8 @@
 #include "hsh.h"
 
+#define CURPWD 0
+#define NEWPWD 1
+
 /**
  * exit_sh - implementation of the 'exit' builtin command
  * @args: any arguments, if any that were passed to it
@@ -23,9 +26,33 @@ void exit_sh(char **args)
 */
 void change_dir(char **args)
 {
-	free_string_array(args);
+	char *dirnames[2];
 
-	printf("THE 'cd' COMMAND WAS INVOKED!");
+	dirnames[CURPWD] = _strdup(retrieve_value(symbol_table, "PWD"));
+
+	if (args[1] != NULL)
+	{
+		if (args[1][0] == '-')
+			dirnames[NEWPWD] = _strdup(
+				retrieve_value(symbol_table, "OLDPWD")
+			);
+		else if (args[1][0] != '~')
+			dirnames[NEWPWD] = _strdup(args[1]);
+		else
+			dirnames[NEWPWD] = _strdup(
+				retrieve_value(symbol_table, "HOME")
+		);
+	}
+	else
+	{
+		dirnames[NEWPWD] = _strdup(
+			retrieve_value(symbol_table, "HOME")
+		);
+	}
+	chdir(dirnames[NEWPWD]);
+
+	modify_node(symbol_table, "PWD", dirnames[NEWPWD]);
+	modify_node(symbol_table, "OLDPWD", dirnames[CURPWD]);
 }
 
 /**
@@ -35,9 +62,7 @@ void change_dir(char **args)
 */
 void set_var(char **args)
 {
-	free_string_array(args);
-
-	printf("THE 'setenv' COMMAND WAS INVOKED!");
+	create_new_node(symbol_table, args[1], args[2]);
 }
 
 /**
@@ -47,9 +72,7 @@ void set_var(char **args)
 */
 void unset_var(char **args)
 {
-	free_string_array(args);
-
-	printf("THE 'unsetenv' COMMAND WAS INVOKED!");
+	delete_node(symbol_table, args[1]);
 }
 
 /**

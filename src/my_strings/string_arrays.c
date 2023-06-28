@@ -105,7 +105,7 @@ size_t calculate_num_of_tokens(const char *string, const char *delimiters)
 	char *string_copy;
 	char *current_token;
 
-	string_copy = strdup(string);
+	string_copy = _strdup(string);
 
 	if (string_copy == NULL)
 		return (0);

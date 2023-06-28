@@ -1,6 +1,8 @@
 #include "hashtable.h"
 
-enum str_lens {KEY, VALUE, ARRAY_NODE};
+#define KEY 0
+#define VALUE 1
+#define ARRAY_NODE 2
 
 /**
  * list_all_nodes - lists the keys and values of string hash table
@@ -37,6 +39,7 @@ char **cast_to_array(table_t *table)
 	node_t *current_node;
 
 	char **new_array = new_string_array(array_length);
+
 	if (new_array == NULL)
 		return (NULL);
 

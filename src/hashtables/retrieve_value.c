@@ -50,7 +50,10 @@ void modify_node(table_t *table, const char *key, char *new_value)
 	while (current_symbol)
 	{
 		if (_strcmp(current_symbol->key, key) == 0)
+		{
+			free(current_symbol->value);
 			current_symbol->value = _strdup(new_value);
+		}
 
 		current_symbol = current_symbol->next;
 	}
