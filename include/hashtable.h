@@ -59,5 +59,6 @@ void swap_node_values(table_t *table, const char *key0, const char *key1);
 void modify_node(table_t *table, const char *key, char *new_value);
 int create_new_node(table_t *table, const char *key, const char *value);
 char **cast_to_array(table_t *table);
+void delete_node(table_t *hash_table, char *key);
 
 #endif
