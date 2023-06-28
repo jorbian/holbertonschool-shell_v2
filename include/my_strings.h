@@ -22,7 +22,6 @@
 char *_strdup(const char *old_string);
 int _strcmp(const char *s1, const char *s2);
 int _strlen(const char *s);
-void _strcpy(char *dest, const char *src);
 void *_memcpy(void *destination, const void *source, size_t num);
 int _atoi(char *s);
 
