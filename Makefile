@@ -1,24 +1,28 @@
-#TEMPOARY MAKEFILE FOR EXPERIMENT
-
 CC ?= gcc
 CFLAGS := -Wall -Werror -Wextra -pedantic
-COBJFLAGS := $(CFLAGS) -c
 
-TARGET := hsh
+ifdef DEBUG
+	CFLAGS := $(CFLAGS) -g
+endif
 
-SRC_FILES=$(wildcard *.c)
-OBJ_FILES=$(SRC_FILES:.c=.o)
+OBJ_PATH := $(or $(obj_path), obj)
+INC_PATH := $(or $(headers), include)
+SRC_PATH := $(or $(src_path), src)
+
+SRC_FILES := $(shell find $(SRC_PATH) -type f -name '*.c')
+OBJ_FILES := $(patsubst $(SRC_PATH)/%.c,$(OBJ_PATH)/%.o,$(SRC_FILES))
 
 TARGET := hsh
 
 all: $(TARGET) clean
 
-%.o: %.c
-	$(CC) $(COBJFLAGS) -o $@ $<
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -c -I$(INC_PATH) -o $@ $<
 
 $(TARGET): $(OBJ_FILES)
 	$(CC) $(CFLAGS) $^ -o $@
 
 .PHONY: clean
 clean:
-	rm -rf $(OBJ_FILES)
+	rm -rf $(OBJ_PATH)
