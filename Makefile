@@ -1,5 +1,5 @@
 CC ?= gcc
-CFLAGS := -Wall -Werror -Wextra -pedantic
+CFLAGS := -Wall -Werror -Wextra -pedantic -O0
 
 ifdef DEBUG
 	CFLAGS := $(CFLAGS) -g
