@@ -5,6 +5,7 @@ static void read_script(void);
 
 char **path;
 int exit_status = 0;
+int line_num = 0;
 table_t *symbol_table;
 
 /**

@@ -18,6 +18,8 @@ void process_command(char *new_line)
 
 	void (*builtin)(char **);
 
+	line_num++;
+
 	tokenized_line = tokenize_string(trim_whitespace(new_line), " ");
 
 	free(new_line);
@@ -31,6 +33,8 @@ void process_command(char *new_line)
 		command_path = find_command_path(tokenized_line[0]);
 		if (command_path != NULL)
 			create_new_process(command_path, tokenized_line);
+		else
+			throw_error(line_num, 0, tokenized_line[0]);
 
 		free(command_path);
 	}
@@ -153,13 +157,16 @@ static void create_new_process(char *command_path, char **command_args)
 	else if (id > 0)
 		wait(&status);
 	else if (id == 0)
-		execve(command_path, command_args, environs);
+		exit_status = execve(command_path, command_args, environs);
+
 	if ((WIFEXITED(status)))
 		exit_status = WEXITSTATUS(status);
+
 	if (id != 0)
 	{
 		fflush(stdout);
 		fflush(stdin);
 	}
+
 	free_string_array(environs);
 }

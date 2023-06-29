@@ -17,8 +17,6 @@ int initalize_shell(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 
-	environ = envp;
-
 	symbol_table = retrieve_environmental_variables(envp);
 	if (symbol_table == NULL)
 		return (EXIT_FAILURE);
