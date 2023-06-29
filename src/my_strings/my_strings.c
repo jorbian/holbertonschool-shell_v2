@@ -81,3 +81,22 @@ void *_memcpy(void *destination, const void *source, size_t num)
 
 	return (destination);
 }
+
+/**
+ * string_cat - a reimplementation of strcat
+ * @destination: string that need to be added to
+ * @source: the source string 
+ * 
+ * Return: String that was just added to.
+*/
+char *string_cat(char *destination, const char *source)
+{
+    char* ptr = destination + strlen(destination);
+ 
+    while (*source != '\0')
+        *ptr++ = *source++;
+ 
+    *ptr = '\0';
+
+    return destination;
+}

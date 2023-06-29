@@ -63,6 +63,40 @@ static void (*check_builtins(char *command_name))(char **)
 	return (NULL);
 }
 
+/**
+ * find_command_path - attempts to find executable path to argv[0]
+ * @command_string: the first string of non whitespace characters entered
+ *
+ * Return: pointer if found, NULL not found
+ */
+static char *find_command_path(char *command_string)
+{
+	struct stat file_info;
+	char *command_path;
+	char *test_path;
+	int i = 0;
+
+	command_path = string_dup(command_string);
+
+	while (path[i])
+	{
+		if (stat(command_path, &file_info) == 0)
+			return (command_path);
+
+		test_path = create_test_path(
+				path[i++],
+				command_string
+		);
+		free(command_path);
+
+		command_path = string_dup(test_path);
+
+		free(test_path);
+	}
+	free(command_path);
+
+	return (NULL);
+}
 
 /**
  * create_test_path - Concatenate command argv[0] to each directory path
@@ -127,6 +161,5 @@ static void create_new_process(char *command_path, char **command_args)
 		fflush(stdout);
 		fflush(stdin);
 	}
-
 	free_string_array(environs);
 }

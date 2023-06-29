@@ -24,6 +24,7 @@ int _strcmp(const char *s1, const char *s2);
 int _strlen(const char *s);
 void *_memcpy(void *destination, const void *source, size_t num);
 int _atoi(char *s);
+char *string_cat(char *destination, const char *source);
 
 /* LIFE AND DEATH OF STRING ARRAYS */
 char **new_string_array(size_t length);
