@@ -1,1 +1,3 @@
 # holbertonschool-shell_v2
+
+This is an abortive attempt at a re-implementation of the Unix shell. It is only in a semi-functional state and DOES NOT support piping and re-directs like it was supposed to. It does, however, handle single commands fairly well...
